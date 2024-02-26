@@ -1,76 +1,53 @@
 # Comparision of various ML Models for Stock Price Prediction 
 
 ## Introduction:
-We compared various Machine Learning models like LSTM, SVM, CNN, and Linear Regression for predicting stock prices. Our primary focus area was to implement the models and try to predict the future Stock Price on the basis of previous year data. 
+Predicting stock price of Infosys stock using sentiments gathered from newsheadlines. 
+Comparing CNN and LSTM models for prediction. 
+Finding out whether news headlines affects the price.
 
-After implementing the models, we compared the models on the basis of various statistical parameters like RMSE (Root Mean Square Error), MSE (Mean Square Error) and MAE (Mean Absolute Error). 
+## Problem Statement
+News headlines have a great impact on people while making their tradingdecisions. Many people don’t have much time or tend to avoid reading the wholenews and just take a buy or sell call on the basis of the headlines. ▪ There is a common belief that if the news is positive then more people areattracted to invest and therefore the stock price of that particular company mayrise and vice-versa.
 
-After successfully completing the above, we tried to inculcate the sentimental parameters and implement the model along with the sentimental parameters and find the results. Finally, we would compare the results with and without the sentiments for various ML models mentioned above.
+Case 1: Infosys shares at record high after winning billion-dollar deal from Daimler AG (Date:
+23 December, 2020) \
+Type: Positive News Result: Change in price 2.31% positive
 
-## Sentimental Analysis on the News Headlines:
-We scraped all the news related to given company (INFOSYS) for a given time period and after preprocessing the data we selected the required columns. Concatenating all news headlines if they are more than one for a particular date, we performed the sentimental analysis on headlines. Last thing we did was finding the polarity score on headlines.
+Case 2: CBI charges DHFL founders with fraud in Pradhan Mantri Awas Yojana (Date: 24
+March, 2021) \
+Type: Negative news Result: Change in price 4.87% negative
 
-## The Scraped News Headlines:
+## Proposed System
 
-![Picture1](https://user-images.githubusercontent.com/62166762/212843077-bcf72790-3e24-4133-a379-7f92bed6171c.png)
+1. First, the historical data of INFOSYS was collected from yahoo finance. The dataset
+contained data from 01-04-2016 to 01-04-2021. ▪ 
+2. Scraping news data of INFOSYS from google news using Google News API in Python
+and storing it in a CSV file. 
+3. Perform sentiment analysis on news headlines using the NLTK module of python for
+natural language processing and VADER Lexicon. 
+4. After performing a sentiment analysis of news headlines, we got the polarity score
+(compound, negative, neutral, positive). 
+5. Then, we merged the final output of sentiment analysis with the historical stock data
+to get the final dataset for evaluation of models. The final dataset after considering
+required fields is shown in table.
 
-## Final Dataset: 
+![Dataset](screenshots/img1.png "Dataset")
 
-![Picture2](https://user-images.githubusercontent.com/62166762/212843361-89480be2-a178-4157-86ee-e8030f826e00.png)
+![Proposed System (Without Sentiments)](screenshots/img2.png "Proposed System (Without Sentiments)")
 
-## Comparision of Models (Without Sentiments):
+![Proposed System (With Sentiments)](screenshots/img3.png "Proposed System (With Sentiments)")
 
-![image](https://user-images.githubusercontent.com/62166762/212843635-7d2c60c9-1002-4036-a54a-3802d55a6656.png)
+## Results 
 
-## Result Metrics Comparison (without Sentiments)
+![Results Metrics](screenshots/img4.png "Results Metrics")
 
-|   | RMSE | MSE | MAPE
-|---|---|---|---|
-|LSTM|27.3201|746.38|23.15|
-|CNN|30.9335|956.88|25.11|
-|Linear Regression|97.08|9426.39|6.8|
-|SVM|41.53|1725.075|2.4|
+![Predicted Stock Value (Without Sentiments)](screenshots/img5.png "Predicted Stock Value (Without Sentiments)")
 
-## Comparision of Models (With Sentiments):
-
-![image](https://user-images.githubusercontent.com/62166762/212846738-bd813f23-0b2f-4304-8269-3698c92f0b51.png)
-
-## Result Metrics Comparison (without Sentiments)
-
-|   | RMSE | MSE | MAPE
-|---|---|---|---|
-|LSTM|42.85|1836.43|27.24|
-|CNN|80.88|6941.75|71.10|
-|Linear Regression|96.79|9369.46|6.8|
-|SVM|43.51|1893.12|2.4|
-
-## Pearson Correlation:
-
-The strength of the association between two variables.
-
-![image](https://user-images.githubusercontent.com/62166762/212847932-28ab0f0b-a375-4307-95ed-ccf364398be0.png)
-
-r takes value between -1 (negative correlation) and 1 (positive correlation).
-r = 0 means no correlation.
-
-Pearson Correlation Metrics (INFOSYS):
-
-||Positive|Negative|Neutral|Compound|
-|---|---|---|---|---|
-|Close Price|0.220|-0.282|-0.059|0.304|
+![Predicted Stock Value (With Sentiments)](screenshots/img6.png "Predicted Stock Value (With Sentiments)")
 
 ## Conclusion:
 
-LSTM gives better results in comparison to other models.
-
-Linear Regression and SVM models can work better on companies which has linear growth over a period of time. Linear Regression model can be helpful in predicting  the trend of stock for a limited period of time.
-
-There is weak correlation found between stock price and news headlines as per our findings.
-
-The RMSE for models with larger duration (i.e. around a decade) are quite lower with that for a shorter duration in our case.
-
-But, due to difficulty of gathering the sentiments for the stock we tried it for only one year.
-
-Effect of sentiments on Stock Price is not clear and is still an area of research, and through our findings we can say that sentiments gathered from News Headlines have very little effect on the Stock Price Prediction.
-
-All the models were implemented on HDFC Bank stock also and similar results were observed.
+LSTM gives better results in comparison to CNN.
+A weak correlation was found between sentiments and closing price as the data gathered is not perfect. 
+To increase the performance of models, it is required that the sentiments gathered are accurate which requires human intervention or advance preprocessing of data to overcome the limitations of API. 
+Further, the same implementation can be carried out on stocks of different sectors to reach a definite conclusion. 
+Also, hybrid models can be made of LSTM and CNN to increase the performance.
