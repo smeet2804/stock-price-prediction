@@ -40,7 +40,7 @@ required fields is shown in table.
 
 ![Results Metrics](screenshots/img4.png "Results Metrics")
 
-![Predicted Stock Value (Without Sentiments)](screenshots/img5.png "Predicted Stock Value (Without Sentiments)")
+![Predicted Stock Value (Without Sentiments)](screenshots/img5_1.png "Predicted Stock Value (Without Sentiments)")
 
 ![Predicted Stock Value (With Sentiments)](screenshots/img6.png "Predicted Stock Value (With Sentiments)")
 
